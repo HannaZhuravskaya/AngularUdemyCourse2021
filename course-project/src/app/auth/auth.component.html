@@ -1,0 +1,38 @@
+<ng-template appPlaceholder></ng-template>
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- Notes: just box alert, without dynamic windows -->
+        <!-- <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
+        </div> -->
+
+        <!-- Notes: imperative approach with *ngIf. !!!! Use by default if there is no reason to do it manually -->
+        <!-- <app-alert [message]="error" (close)="onHandleError()" *ngIf="error"></app-alert> -->
+
+
+        <app-loading-spinner *ngIf="isLoading"
+            style="position: fixed; top: 40vh; left: 40vw; height: 20vh; width: 20vw; text-align: center;">
+        </app-loading-spinner>
+
+        <form #authForm="ngForm" (ngSubmit)="onSubmitForm(authForm)" *ngIf="!isLoading">
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" class="form-control" ngModel name="email" required email>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" ngModel name="password" required
+                    minlength="6">
+            </div>
+            <div>
+                <button class="btn btn-success" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' :
+                    'Sign Up'
+                    }}</button>
+                <button class="btn btn-primary" type="button" (click)="isLoginMode=!isLoginMode">{{ isLoginMode ?
+                    'Switch To Sign Up'
+                    : 'Switch To Login' }}</button>
+            </div>
+        </form>
+    </div>
+</div>

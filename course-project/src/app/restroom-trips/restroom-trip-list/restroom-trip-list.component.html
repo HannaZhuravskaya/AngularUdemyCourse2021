@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-12">
+        <!-- <button class="btn btn-success" (click)=onNewRecipe()>New recipe</button> -->
+        <button class="btn btn-success" routerLink="./new">Add</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- <app-restroom-trip-item *ngFor="let restroomTrip of restroomTrips; let id = index" [restroomTrip]="restroomTrip"
+            [id]="id">
+        </app-restroom-trip-item> -->
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let restroomTrip of restroomTrips; let id = index">
+                    <td>{{ restroomTrip.dateTime | date:'dd.MM.yyyy' }}</td>
+                    <td>{{ restroomTrip.dateTime | date:'hh:mm'}}</td>
+                    <td> {{restroomTrip.type | enumAsString:restroomTripType}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

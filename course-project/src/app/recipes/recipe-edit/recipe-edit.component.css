@@ -1,0 +1,10 @@
+.image-preview {
+    margin-top: 10px;
+    max-height: 200px;
+}
+
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

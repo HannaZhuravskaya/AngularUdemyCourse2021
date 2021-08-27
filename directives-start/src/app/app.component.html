@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of oddNumbers" [ngClass]="{odd: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'lightgray' : 'transparent'}"> {{ number }}</li>
+        </div>
+        <div *ngIf="!onlyOdd">
+          <li class="list-group-item" *ngFor="let number of evenNumbers" [ngClass]="{odd: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'lightgray' : 'transparent'}"> {{ number }}</li>
+        </div>
+      </ul>
+
+      <hr>
+
+      <p appBasicHighlight>Style me with basic highlight directive!</p>
+      <p appBetterHighlight>Style me with better highlight directive!</p>
+      <!-- Notes: !!! to put string param use " " and inside 'value' !!! 
+      Can use 'value' without '' when bindingProperty without [] (Just for string params) -->
+      <p appBetterHighlight [defaultColor]="'red'" highlightColor="orange">Style me with better highlight directive
+        with
+        custom font colors!</p>
+
+      <hr>
+      <label>ngIf directive</label>
+      <!-- Notes: *ngIf === ng-template with property binding [ngIf] (Create context if true) -->
+      <p *ngIf="true">Only odd (*ngIf)</p>
+
+      <ng-template [ngIf]="true">
+        <p>Only odd (ng-template [ngIf])</p>
+      </ng-template>
+
+      <hr>
+      <label>appUnless directive</label>
+      <p *appUnless="false">Custom structural directive (*appUnless)</p>
+
+      <ng-template [appUnless]="false">
+        <p>Custom structural directive (ng-template [appUnless])</p>
+      </ng-template>
+
+      <hr>
+      <label>ngSwitch directive</label>
+      <div [ngSwitch]="7">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchDefault>Value is default</p>
+      </div>
+    </div>
+  </div>

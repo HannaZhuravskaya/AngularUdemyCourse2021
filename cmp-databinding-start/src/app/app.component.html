@@ -1,0 +1,15 @@
+<div class="container">
+  <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintCreated($event)"></app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+        <!-- Notes: Do not forget to add ng-content to be able to add smth into the component -->
+        <p>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>
